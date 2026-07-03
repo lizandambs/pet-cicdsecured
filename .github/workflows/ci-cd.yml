@@ -135,6 +135,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch: dev
           fail-on-quality-gate-error: true
-
+          run: |
+             curl -u ${{ env.SONAR_TOKEN }}: -X POST \
+             "https://sonarcloud.io/api/project_branches/set_main" \
+             -d "project=${{ env.SONAR_PROJECT_KEY }}&branch=dev"
 
 
